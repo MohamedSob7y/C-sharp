@@ -8,7 +8,8 @@ namespace C_.Data_Types
 {
     public class Piont
     {
-        int x;
-        int y;
+        public int x { get; set; }
+        public int y { get; set; }
+        
     }
 }
