@@ -1,5 +1,6 @@
 ﻿using C_.Data_Types;
 using System.Collections.Specialized;
+using System.Globalization;
 
 namespace C_
 {
@@ -41,7 +42,7 @@ namespace C_
             #endregion
             //=============================================
             #region Object Methods
-           // Piont P1 = new Piont() { x = 10, y = 20 };
+            // Piont P1 = new Piont() { x = 10, y = 20 };
             //object number = 12345;//This Boxing  as number from Reference type + 12345 is Value Type Store in Heap as Box
             //int x = 500;//This Value Type
             //object name = "Mohamed";//This Reference Type
@@ -85,11 +86,172 @@ namespace C_
             //Assign refreence in stack will refre Object in heap
 
 
-             // object name = 15.6;//this Boxig هخزن الreference in stack والقيمة  in Boxing in heap 
+            // object name = 15.6;//this Boxig هخزن الreference in stack والقيمة  in Boxing in heap 
             //int number = (int)name;//this unBosing هاخد القيمة ممن Boxing in heap واخزنها فى stack  وبقى unreachable object => فيجى Garage Collector يمسحه لانه Manganed By Clr  
             //So عملية Boxing and UnBoxing => Low Performance and Need More Memory
             #endregion
+            //=============================================
+            #region Fraction and Discard
+            //1: Float [Single Precision Floating Piont] => has 4 byte 32 bits 
+            //approximatly 7 Digit overall قبل وبعد العلامة ولو زودت عن كدة بيعمل Round لاخر رقم فقط 
+            //Float is Low Memory + high Losting Data
+            //2: Double [double Precion Floating Piont ]=> 8byte 64 bits approximately 15-16 Digit overall ولو زودت عن كدة بيعمل Round لاخر رقمين 
+            //Double Is More memory + Lost Data قليلة
+            //3: Decimal [ High Presnio floating piont]=> 16 byte 128 bits approximatly 28-29 Digit overall قبل وبعد العلامة 
+            //decimal is high Memory + No Losting For Data
+            //long Number = 10055165955;
+            //Console.WriteLine($"Money is: {Number:c}");//Formating Currency عملة => Currency Formating soecifier=>Money is: $10,055,165,955.00
+            #endregion
+            //=============================================
+            #region Convert_Parse_TryParse
+            //Convert =>Convert From Any Datatype to anthore handle null = zero  and thorw exception when is Formating يعنى مش عارف يحول
+            //Parse=>Convert From string to Numberic datatype will Throw when Null [ctr+z] [NullArgumentException] or in Formating [InFormatingException]
+            //TryPrase=>Convert from String to numberic datatype Nu Exception handle null = Zero  and Formating =Zero لو مش عارفة تحول and this return bool 
+            //string? Name=Console.ReadLine();//Read string From User
+            //Datatype?  Nullable Datatype allow null
+            //?? "NoName" NullColaseing Operator
+            //int Age=Convert.ToInt32(Console.ReadLine());
+            //int Age = int.Parse(Console.ReadLine()??"0");//To handle Null
+            //bool result=int.TryParse(Console.ReadLine(), out int age);
+            //Console.Clear();
+            //Console.WriteLine(Name);
 
+            #endregion
+            //=============================================
+            #region Implcicit_Explcicit_Catsing
+            //long x = 1022664;
+            //int y =(int) x;//this Explicit Catsing Manual
+            //int a = 1526;
+            //long b = a;//Implcicit Catsing Automatic
+            //float y = 15.55f;
+            //int x =(int) y; //this Explicit Catsing Manual
+            //int y = 15;
+            //float x = y;//Implcicit Catsing Automatic
+
+            //long y = 10000000000000000;
+            //int x = (int)y;//معدى الMax int فهيدى قيمة عشوائية  
+            //To handle This Error 
+
+
+            //long a = 1500000000000;
+            //checked
+            //{
+            //    int b = (int)a;
+            //    unchecked
+            //    {
+            //        Console.WriteLine(b);//Will Throw Exception  لو هيدى قيمة عشوائية 
+            //    }
+            //}
+            //Or 
+            //long a = 150000000;
+            //if(int.MaxValue<a||a<int.MinValue)
+            //{
+            //    Console.WriteLine("Error Message");
+            //}
+            //else
+            //{
+            //    int b = (int)a;
+            //    Console.WriteLine(b);
+            //}
+
+
+
+            #endregion
+            //=============================================
+            #region String Formating
+            //int x = 5, y = 10;
+            //int Result = x + y;
+            //Console.WriteLine($"{x}+{y}={Result}");//string Interpolation
+            //string message = string.Format("{0}+{1}={2}",x,y,Result);//Formating String
+            //Console.WriteLine("{0}+{1}={2}",x,y,Result);//Composit Formating
+
+            ////string Concatination
+            //string message02 = "Mohamed";
+            //message02 += " Sobhy";
+            //Console.WriteLine(message02);//Mohamed Sobhy الطريقة دى More Memory محتاجه وقت وحجم كبير لانى كل شوية بيحصل unreachable object in heap
+            #endregion
+            //=============================================
+            #region Operators
+            //1: Unary ++ -- Prefix Postfoix
+            //x++ is postfix
+            //++x is prefix
+            //2: Binary  +  - * / % 
+            //3: Assignment : +=   -=   *=   /=   %=
+            //4: Relational :  ==  !=   >=   <=    
+            //5: Logical : &&   ||    !
+            //6: Bitwise: & ^ ! & |
+            //7: Ternary: ?:
+            //Periority :   
+            #endregion
+            //=============================================
+            #region Control Statment 
+            //1: Selection / Conditional Statment=> If els /Elseif   / Switch  
+            //2: Loop / Iteration statment=> While /DoWhile/ For/ Foreach
+            //3: Jump Statment=> Break Exite of Condition + Loop [Goto] [Continue]
+            //Example
+            //Console.WriteLine("Please enter Number of Month : ");
+            //int Day;
+            //bool Result=int.TryParse(Console.ReadLine(), out  Day);
+
+            //if(Day==1)
+            //{
+            //    Console.WriteLine("Hello January");
+            //}
+            //else if(Day==2)
+            //{
+            //    Console.WriteLine("Hello Feb");
+            //}
+            //else
+            //{
+            //Console.WriteLine("Error ");
+            //}
+
+
+            //using Switch
+            //switch (Day)
+            //{
+            //    case 1:
+            //        Console.WriteLine("Hello January");
+            //        break;
+            //    case 2:
+            //        Console.WriteLine("Hello Feb");
+            //        break;
+            //    default:
+            //        Console.WriteLine("Error");
+            //        break;
+            //}
+
+
+            #endregion
+            //=============================================
+            #region Question 14 on Assignment Session03
+            /*
+             - Write a program that takes 3 integers from the user then prints the max element and the min element.
+               Example (1)
+               Input:7,8,5
+               Output:
+               max element = 8
+               min element = 5
+               —--------------------------------
+               Example (2)
+               Input: 3 6 9
+               Outputs:
+               Max element = 9
+               Min element = 3
+             */
+
+            #endregion 
+            //===============================================
+            #region Question 17 On Assignment Session03
+            /*
+             Write a program to input the month number and print the number of days in that month.
+             Example
+             Input: Month Number: 1
+             Output: Days in Month: 31
+
+             */
+
+            #endregion
         }
     }
 }
