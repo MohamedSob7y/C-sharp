@@ -560,13 +560,55 @@ namespace C_
             //Console.WriteLine(Message);
             //Message.Remove(0,3);//this Take Start index then length يعنى هبدا منين وهمشى كام خطوة
             //Message.Insert(0, "Hi");//Insert فى اى حتة براحتك مش بتضييف node زى الAppend 
-            
+
             //Console.WriteLine(Message);
             //int age = 20;
             //Message.AppendFormat("\nYour Age is {0}",age);
             //Console.WriteLine(Message);
             //Message.AppendJoin("_","Ahmed","Mohamed","Marien");
             //Console.WriteLine(Message);
+            #endregion
+            //===============================================
+            #region Array
+            //Array is Collection of Element with The Same Type
+            //array is Fixed size Not Dynamic Size
+            //Types of Array 1D Array  2D Array  Jugged Array يعنى array Contain Collection of Element Each Element has Collection of element يعنى array تحتوى على array   
+            //Array is Reference Type Variable Store in Stack and Array of Values Store in Heap
+            //Array is Zero Based index يعنى تحتوى على عناصر العنصر الاول بيبدا من Zero index 
+            //Array Access EElement By index بتاعه 
+            // int[] Arr;
+            //Clr Will Allocate 4 Byte in Stack With Default Value Null + 0 Byte in heap
+            //Clr Declare Refernce From Type int in Stack Will Be Assign or Refere To object Conatin Array in Heap
+            // Arr = new int[3];
+            //Clr Will Be Allocate 12 Byte in Heap
+            //Intialize Allocate Bytes With dEfault Value of Data Type
+            //Call Empty Parameter Less Constructor if Exsisit
+            //Assign Reference in Stack Will Be Refere Object in Heap
+            //Arr in Stack With 4 Byte => Refre object 12 Byte in Heap [0-0-0]
+            //Console.WriteLine(Arr[0]);//0 لان دى الDefault Value اللى بتتعمل لما باجى اعمل الAllocation in Heap
+            //Arr[0] = 15;//Replace 0 With 15 in First element in 0 index
+            //Console.WriteLine(Arr[0]);//15
+            //Console.WriteLine(Arr.GetHashCode());
+            //Arr.Length => Get Size of Array
+            //Arr.Rank=> Get Type of Array يعنى هو كام D is 1D or 2D or 3D
+            //for (int i = 0; i < Arr.Length; i++)
+            //{
+            //    Console.WriteLine(Arr[i]);
+            //}
+            //foreach (var i in Arr)//Take Copy of Array Not Original Version
+            //{
+            //    Console.WriteLine(i);
+            //}
+            //======================================================
+            //======================================================
+            //This other Way For Creating Array
+            //int[] Numbers = new int[3] { 10, 20, 30 };//using Object Initializer
+            //int[] Numbers = { 10, 20, 30 };
+            //int[] Numbers = new int[] { 10, 20, 30 };
+            //Can Access Any Element of array using index in only one Step يعنى اقدر اوصل لاى عنصر داخل الarray  من خطوة واحدة فقط  using this Rule [baseAddress+Index of element اللى عايز اوصله]+ (size of each Element *2)
+            //لان الrefrence بيكون مشاور على اول عنصر وشايل الaddress بتاعه مش شايل address الarray كلها عاملة زى الLinkedList in stringBuilder =>Base Address is Address First element اللى الrefrence مشاور عليه
+           
+            //runtime Exception => index out of Range انى بحاول اوصل لindex مش موجود زىمثلا انا عامل array With Size3 يعنى اخرى فى الindex 2   جيت وعملت index3 عشان اجيب العنصر اللى جواه وهو اصلا فاضى فدى تسبب index out of Range
             #endregion
 
         }
