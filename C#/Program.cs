@@ -2,6 +2,7 @@
 using System.Collections.Specialized;
 using System.Globalization;
 using System.Net.Http.Headers;
+using System.Text;
 
 namespace C_
 {
@@ -527,6 +528,47 @@ namespace C_
 
                  */
             #endregion
+            //===============================================
+            #region String Builder in Session05 
+            //string Builder is Built in Class [Reference Data type يعنى الRefernce Store in Stack + Object in Heap] muutable يعنى قابل للتعديل على نفس المكان فى الHeap مش بيحجز مكان جديد على عكس الString
+            //string Builder internally represent Linked List Each Node Conatin Value+ Address of Next Node
+            //string internally represent Fixed Array عشان كدة غير قابل للتعديل على نفس المكان 
+
+            //StringBuilder Message   ;//Clr Declare Reference Type From StringBuilder and CLr Will Allocate 4 Byte in Stack With dEfault Value Null + 0 Byte in Heap
+            ////Message = new StringBuilder();//كدة انا حجزت Only one Node Not Array of Node والمفروض الNode اللى انا عاملها فاضية 
+            //Message = new StringBuilder("Mohamed"); 
+            ////Reference From Type StringBuilder [Message] in Stack بيشاور على Object in heap المفروض الobject دا يحتوى على Array of Node Each Node has Value+ Address of Next Node 
+            ////يعنى كدة الRefernce  بيشاور على First Node ودى تعتبر هى الHead Node اللى عن طريقها هوصل للباقى عادى يبقى كدة الReference شايل Address of First Node only 
+            //Console.WriteLine(Message);
+            //Console.WriteLine(Message.GetHashCode());
+            ////Message.Clear();//كدة انا دخلت على كل Node مسحت كل الValues اللى موجودة جواه
+            //                //يعنى مازال Nodes موجودة بس اللى جواها اتمسح
+            //Console.WriteLine(Message);
+            //Console.WriteLine(Message.GetHashCode());//هيطبع نفس الHashcode لانه مازال بيشاور على Node بس اللى جواه الNode هو اللى اتمسح مش بمسح اى Node موجودة 
+            //Message.Append("Ahmed");
+            //Console.WriteLine(Message);//MohamedAhmed بس انا كدة عدلت على انفس المكان ازاى By Adding New Node has "Ahmed " يعنى مع كل زيادة او نقص انا بزود عدد Node او بمسح من غير ماعدل على حاجة بس دا كله فى نفس المكان فى الHeap
+            //Console.WriteLine(Message.GetHashCode());//نفس الHashcode لان Reference مازال ماسك او Node 
+            //===================================================================================
+            //Method String Builder
+            //StringBuilder Message= new StringBuilder("Hello");
+            //Message.Append(" Mohamed");//Append =>Add New Node in Linkedlist This node have New Value اللى ضيفتها الجديدة 
+            //Console.WriteLine(Message);//Hello Mohamed
+            //Message.AppendLine(" Welcome");//Append Then make New line يعنى بعد كدة لو عملت Append جديدة هتبقى فى Line لوحدها عن التانيه    
+            //Message.Append("Ahmed");
+            //Console.WriteLine(Message);
+            //Message.Replace("Ahmed","Salah");
+            //Console.WriteLine(Message);
+            //Message.Remove(0,3);//this Take Start index then length يعنى هبدا منين وهمشى كام خطوة
+            //Message.Insert(0, "Hi");//Insert فى اى حتة براحتك مش بتضييف node زى الAppend 
+            
+            //Console.WriteLine(Message);
+            //int age = 20;
+            //Message.AppendFormat("\nYour Age is {0}",age);
+            //Console.WriteLine(Message);
+            //Message.AppendJoin("_","Ahmed","Mohamed","Marien");
+            //Console.WriteLine(Message);
+            #endregion
+
         }
     }
 }
