@@ -718,12 +718,110 @@ namespace C_
             //}
             #endregion
             //===========================================================
-            #region Assignment Session05 
+            #region Assignment Session05 Identity Matrix سؤال تانى 
+            /*
+             2- . Write a program that prints an identity matrix using for loop, in other words takes a value n from the user and shows the identity table of size n * n.
+             */
+            //int n;
+            //Console.Write("Enter Size of Array : ");
+            //int.TryParse(Console.ReadLine(),out n);
+            //int[,]Arr = new int[n,n];
+            //int cols=Arr.GetLength(1);
+            //for (int i=0;i<Arr.Length;i++)
+            //{
+            //   int row=i/cols;
+            //   int col=i%cols;
+            //    if (row == col)
+            //    {
+            //        Console.Write("1 ");
+            //    }
+            //    else
+            //    {
+            //        Console.Write("0 ");
+            //    }
 
+            //    if (col == cols - 1)
+            //    {
+            //        Console.WriteLine();
+            //    }
+            //}
+            #endregion
+            //===========================================================
+            #region Assignment Session 05 Merge Array
+            /*
+             4- Write a program in C# Sharp to merge two arrays of the same size sorted in ascending order.
+             */
 
+            //int[] Arr01 = [30, 20, 10, 40];
+            //int[] Arr02 = [60, 50, 90, 70, 80];
+
+            //int[] newArr = Arr01.Concat(Arr02).ToArray();
+            //Array.Sort(newArr);
+            //foreach (int i in newArr)
+            //{
+            //    Console.WriteLine(i);
+            //} 
 
             #endregion
+            //===========================================================
+            #region Assignment Session 05 Count Frequency 
+            /*
+              Write a program in C# Sharp to count the frequency of each element of an array.
+             */
+            //int[] Arr = [10, 20, 30, 10, 40, 10, 50, 10];
 
+            //for (int i = 0; i < Arr.Length; i++)
+            //{
+            //    int Count = 0;
+            //    bool Repeated = false;
+
+            //    // هل الرقم ظهر قبل كده؟
+            //    for (int j = 0; j < i; j++)
+            //    {
+            //        if (Arr[i] == Arr[j])
+            //        {
+            //            Repeated = true;
+            //            break;
+            //        }
+            //    }
+
+            //    if (Repeated)
+            //        continue;
+            //    for (int j = 0; j < Arr.Length; j++)
+            //    {
+            //        if (Arr[i] == Arr[j])
+            //        {
+            //            Count++;
+            //        }
+            //    }
+
+            //    Console.WriteLine($"{Arr[i]} = {Count}");
+            //}
+
+            #endregion
+            //===========================================================
+            #region Jagged Array Using one Loop
+            //int[,] numbers = new int[3, 4];
+            //int cols = numbers.GetLength(1);
+            //for (int i = 0; i < numbers.Length;)
+            //{
+            //    int row = i / cols;
+            //    int col = i % cols;
+            //    Console.Write($"Enter Value [{row},{col}]: ");
+            //    bool isParsed = int.TryParse(Console.ReadLine(), out numbers[row, col]);
+            //    if (isParsed == true)
+            //    {
+            //        ++i;
+            //    }
+            //}
+            //for (int i = 0; i < numbers.Length; i++)
+            //{
+            //    int row = i / cols;
+            //    int col = i % cols;
+            //    Console.WriteLine($"numbers[{row},{col}] = {numbers[row, col]}");
+            //}
+
+            #endregion
         }
     }
 }
