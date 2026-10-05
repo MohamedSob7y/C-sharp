@@ -607,8 +607,121 @@ namespace C_
             //int[] Numbers = new int[] { 10, 20, 30 };
             //Can Access Any Element of array using index in only one Step يعنى اقدر اوصل لاى عنصر داخل الarray  من خطوة واحدة فقط  using this Rule [baseAddress+Index of element اللى عايز اوصله]+ (size of each Element *2)
             //لان الrefrence بيكون مشاور على اول عنصر وشايل الaddress بتاعه مش شايل address الarray كلها عاملة زى الLinkedList in stringBuilder =>Base Address is Address First element اللى الrefrence مشاور عليه
-           
+
             //runtime Exception => index out of Range انى بحاول اوصل لindex مش موجود زىمثلا انا عامل array With Size3 يعنى اخرى فى الindex 2   جيت وعملت index3 عشان اجيب العنصر اللى جواه وهو اصلا فاضى فدى تسبب index out of Range
+            //======================================================
+            //======================================================
+            //2D Array
+            //int[,] Arr = new int[3, 3];
+            //Clr Will Be Allocate 4 Byte in Stack With Default Value Null + 0 Byte in Heap
+            //Clr Will Declar Reference[Arr] from Type int
+            //With New=> Clr Will Allocate Required Number of 3*3*4=36 Byte in Heap 
+            //Intialize Allocate Bytes With Default Value of Data Types
+            //Call Empty Parameterless Constructor if Exsist
+            //Assign Reference in Stack will Refere To object in heap هيخليه بيشاور عليه
+            //Arr[0, 0] = 10;
+            //Arr[0, 1] = 20;
+            //Arr[0, 2] = 30;
+            //Arr[1, 0] = 40;
+            //Arr[1, 1] = 50;
+            //Arr[1, 2] = 60;
+            //Arr[2, 0] = 70;
+            //Arr[2, 1] = 80;
+            //Arr[2, 2] = 90;
+            //Using Object intializer
+            //int[,] Arr = new int[3, 3] { {10,20,30 },{40,50,60 },{70,80,90 } };
+
+            //Take Values From User
+            //int[,] Arr = new int[3, 3];
+            //for (int i = 0; i < Arr.GetLength(0); i++)//This Rows=> Numbers Of Student
+            //{
+            //    Console.WriteLine($"Student  {i + 1} : ");
+
+            //    for (int j = 0; j < Arr.GetLength(1);/*j++*/)//This Columns=> Numbers of Grad
+            //    {
+            //        Console.Write($"Grad  {j + 1} : ");
+            //        bool isParse = int.TryParse(Console.ReadLine(), out Arr[i, j]);
+            //        if (isParse == true)
+            //        {
+            //            ++j;
+            //        }
+            //    }
+            //    Console.WriteLine("========================================================================");
+
+            //}
+            //Console.WriteLine(Arr.Length);//9
+            //for (int i = 0; i < Arr.GetLength(0); i++)
+            //{
+            //    Console.WriteLine($"Student  {i + 1} : ");
+            //    for (int j = 0; j < Arr.GetLength(1); j++)
+            //    {
+            //        Console.Write($"Grad  {j + 1} : ");
+            //        Console.WriteLine(Arr[i, j]);
+            //    }
+            //    Console.WriteLine("========================================================================");
+            //}
+
+            //===========================================================
+            //===========================================================
+            //Jagged Array
+            //int[][]JaggedArray=new int[3][];//this Size of Jagged Array Has 3 Array Each Array is Refrence of Element in Heap
+            //JaggedArray[0] = new int[3];//او عنصر داخل الJagged Array يحتوى على Array of 3 Element 
+            //JaggedArray[1]=new int[2];//تانى عنصر داخل الJaggedArray يحتوى على Array From 2 element 
+            //JaggedArray[2]=new int[1];//تالت عنصر داخل الJaggedArray يحتوى على array of 1 Element 
+            //===========================================================
+            //===========================================================
+            //Array Methods
+            //تنقسم الى Class Member Method=>بنادى عليها using Class نفسه
+            //Object Member Method=> بنادى عليها using object From Class
+            //int[] Numbers = { 2, 3, 5, 4, 1, 6, 7 };
+            //Sort this Array Ascending
+            //Array.Sort(Numbers);//this Method is Class Member Method=> Use IComparable interface this Default Sorting يعنى DEfault بترتب  Ascending
+            //this Function Internally use Bubble Sort تقارن كل رقمين مع بعض فى الIteration الواحدة 
+
+            //Array.Reverse(Numbers);//بتعكس الoutput اللى خارج يعنى 
+
+            //Array.Clear(Numbers);//Delete All Value From index بس مكان الindex  موجود وبيشيل القيمة صفر بس مكانها موجود عاملة زى Clear in StringBuilder using LinkedList بيخش على الNode وبيمسح القيمة اللى بداخلها بس هى مازالت موجودة بس قيمتها بصفر
+
+
+            //Array.Clear(Numbers, 0, 4);//انا همسح القيم اللى موجودة بداية من index=0 وهمشى 4 خطوات بداية من index=0
+
+            //Array.IndexOf(Numbers, 5);//ببعت الSearch Value in Array =>return index of this Element ولو القيمة اللى ببحث عنها مش موجود يبقى يرجع -1
+            //Array.IndexOf(Numbers, 9);//this Value Not Exsist in Array => will return -1  
+            //int[] Numbers02 = {10,20,30,10,40,50 };
+            //Array.IndexOf(Numbers02, 10);//هنا بدور على قيمة موجودة مرتين فى الarray يبقى هيرجع  index بتاعت  اول ظهور ليها
+            //Array.LastIndexOf(Numbers, 6);//بتجيب index بتاع اخر ظهور للقيمة اللى بدور عليها فى حالة انها موجودة اكتر من ميرة واحدة 
+
+            //Array.CreateInstance(typeof(int), 5);//Create New Array جديدة من Type دا واسمها Numbers والSize بتاعها 5 دى زى دى بالظبط => int[]Numbers=new int[size]; بيعمل نفس الحاجة بيروح يحجز اماكن فى الHeap with Default Value لكل قيمة على حسب الsize بتاعها بقا 
+            //Array.Resize(ref Numbers,10);//بجدد الSize بتاع الarray => هنا كدة بعمل تجديد للArray with New Size بس دا كدة عمل New object in Heap with New Size as Array is Fixed Size عشان كدة لما عدلت الsize اتعدل وعمل مكان جديد واللى قبلها اصبحت unReachable object
+            //كدة انا نقلت الValues From old Array in New array وكمان الاماكن الباقية فى New array => تاخد الDefault Value
+            //So New Array Has Address مختلف عن Array القديمة لان لما عملتلها resize كدة حجزت مكان جديد ونقلت القيم على طول 
+
+
+            //int[] Numbers = { 1, 2, 3, 4, 5 };
+            //int[] Numbers02 = new int[5];
+            //Array.Copy(Numbers, Numbers02,4);//Take Source then Destination then انا هنقل قد اي من العناصر 
+            //Old Numbers Before Copy=>0 0 0 0 0
+            //New Numbers After Copy =>1 2 3 4 0
+            //Array.ConstrainedCopy(Numbers,1,Numbers02,2,3);//بتحكم انا هنقل من فين لفين 
+
+            //================================================================
+            //================================================================
+            //Object Member Method
+            //int[] Numbers = [10, 20, 30];
+            //int SizeofArray= Numbers.Length;
+            //int TypeofArray= Numbers.Rank;
+            //Numbers.SetValue(100, 0);
+            //int Result=(int)Numbers.GetValue(0);//Need For Casting
+            //foreach (int number in Numbers)
+            //{
+            //    Console.WriteLine(number);
+            //}
+            #endregion
+            //===========================================================
+            #region Assignment Session05 
+
+
+
             #endregion
 
         }
