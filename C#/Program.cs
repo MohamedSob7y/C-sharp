@@ -2,6 +2,7 @@
 using System.Collections.Specialized;
 using System.Globalization;
 using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace C_
@@ -798,6 +799,170 @@ namespace C_
             //    Console.WriteLine($"{Arr[i]} = {Count}");
             //}
 
+            #endregion
+            //===========================================================
+            #region Assignment Session05 Find Min and Max Of Array
+
+            /*
+             6- Write a program in C# Sharp to find maximum and minimum element in an array
+             */
+
+            //int[] Arr = [10, 20, 30, 40, 50];
+            //int Max = Arr[0];//10
+            //int Min = Arr[0];//10
+
+            //for (int i = 1; i < Arr.Length; i++)
+            //{
+            //    if (Arr[i] > Max)//20>10  yes in First Iteration
+            //    {
+            //        Max = Arr[i]; //max=20
+            //    }
+
+            //    if (Arr[i] < Min) // 20<10  no يبقى تفضل زى ماهى 
+            //    {
+            //        Min = Arr[i];
+            //    }
+            //}
+
+            //Console.WriteLine("Maximum = " + Max);
+            //Console.WriteLine("Minimum = " + Min); 
+
+            #endregion
+            //===========================================================
+            #region Assignment Session05 Find Second Largest Element in Array
+
+            /*
+             7- Write a program in C# Sharp to find the second largest element in an array.
+             */
+
+
+
+            //int[] Arr = [30,40,80,100,100,70,60];
+
+            //Array.Sort(Arr);
+
+            //int max = Arr[Arr.Length - 1];//اكبر رقم => 100
+            //for(int i=Arr.Length-2;i>=0; i--)// 100 80 70 60 40 30
+            //{
+            //    if (Arr[i] != max)
+            //    {
+            //        Console.WriteLine($"Second Largest Element is : {Arr[i]}");
+            //        break;
+            //    }
+            //}
+            #endregion
+            //===========================================================
+            #region Assignment Session05 Find Largest Distance Between Equals Elements
+            /*
+             8-. Consider an Array of Integer values with size N, having values as    
+ in this Example
+
+7	   0	0	0	0	5	6	7	5	0	7	5	3
+
+write a program find the longest distance between Two equal cells. In this example. The distance is measured by the number Of cells- for example, the distance between the first and the fourth cell is 2 (cell 2 and cell 3).
+
+In the example above, the longest distance is between the first 7 and the
+10th 7, with a distance of 8 cells, i.e. the number of cells between the 1st
+And the 10th 7s.
+
+Note:
+- Array values will be taken from the user
+- If you have input like 1111111 then the distance is the number of
+Cells between the first and the last cell.
+
+
+             
+             */
+
+            //int[] Arr = [5, 3, 2, 1, 5, 7, 5, 3, 7];
+            //int Dis = 0;
+            //for (int i = 0; i < Arr.Length; i++)
+            //{
+            //    for (int j = i + 1; j < Arr.Length; j++)
+            //    {
+            //        if (Arr[i] == Arr[j])
+            //        {
+
+            //            int NewDis = j - i - 1;
+
+            //            if (NewDis > Dis)
+            //            {
+            //                Dis = NewDis;
+            //            }
+
+            //        }
+            //    }
+
+            //}
+            //Console.WriteLine($"Largest Distance is {Dis}");
+
+
+            #endregion
+            //===========================================================
+            #region Assignment Session05 Create Mutli Dimentioal Array
+            /*
+             Write a program to create two multidimensional arrays of same size. Accept value from user and store them in first array. Now copy all the elements of first array on second array and print second array
+             */
+            //int row,column;
+            //Console.Write("Enter Size of Row of Array: ");
+            //int.TryParse(Console.ReadLine(), out  row);
+            //Console.Write("Enter Size of column of Array: ");
+            //int.TryParse(Console.ReadLine(), out column);
+            //int[,] Arr1 = new int[row, column];
+            //int[,] Arr2 = new int[row, column];
+            //for (int i=0;i<Arr1.GetLength(0);i++)
+            //{
+            //    Console.WriteLine($"Group {i+1}: ");
+            //    for(int j=0;j<Arr1.GetLength(1);)
+            //    {
+            //        Console.Write($"element {j+1}: ");
+            //        bool isparsed=int.TryParse(Console.ReadLine(),out Arr1[i,j]);
+            //        if(isparsed==true)
+            //        {
+            //            j++;
+            //        }
+            //    }
+            //}
+            //Array.Copy(Arr1,Arr2,Arr1.Length);//Built in Copy
+            //for (int i = 0; i < Arr1.GetLength(0); i++)
+            //{
+            //    for (int j = 0; j < Arr1.GetLength(1); j++)
+            //    {
+            //        Arr2[i, j] = Arr1[i, j];
+            //    }
+            //}//Manual Copy 
+            //Console.WriteLine("===================================================");
+            //for (int i = 0; i < Arr2.GetLength(0); i++)
+            //{
+            //    Console.WriteLine($"Group {i + 1}: ");
+            //    for (int j = 0; j < Arr2.GetLength(1);j++)
+            //    {
+            //        Console.WriteLine($"element {j + 1}: {Arr2[i,j]} ");
+
+            //    }
+            //}
+            #endregion
+            //===========================================================
+            #region Assignment Session05 Reverse Word
+            /*
+             Given a list of space separated words, reverse the order of the words.
+
+Input: this is a test		Output: test a is this
+Input: all your base		Output: base your all
+Input: Word			Output: Word
+Note : 
+Check the Split Function (Member in String Class) Output will be a Single Console.WriteLine Statement
+
+             */
+
+
+
+            
+            //Console.Write("Enter The String : ");
+            //string Arr = Console.ReadLine();
+            //string[] words=Arr.Split(' ');
+            //Array.Reverse(words);
+            //Console.WriteLine(string.Join(" ", words));
             #endregion
             //===========================================================
             #region Jagged Array Using one Loop
