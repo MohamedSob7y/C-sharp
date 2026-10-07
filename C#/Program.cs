@@ -503,6 +503,8 @@ namespace C_
             //} while (!IsParsed);
             #endregion
             //=============================================
+            #region Assignment session03
+            //=============================================
             #region Question 14 on Assignment Session03
             /*
                  - Write a program that takes 3 integers from the user then prints the max element and the min element.
@@ -528,6 +530,8 @@ namespace C_
                  Output: Days in Month: 31
 
                  */
+            #endregion 
+            //=============================================
             #endregion
             //===============================================
             #region String Builder in Session05 
@@ -718,6 +722,8 @@ namespace C_
             //    Console.WriteLine(number);
             //}
             #endregion
+            //===========================================================
+            #region Assignment Session05 C# Basics
             //===========================================================
             #region Assignment Session05 Identity Matrix سؤال تانى 
             /*
@@ -957,12 +963,14 @@ Check the Split Function (Member in String Class) Output will be a Single Consol
 
 
 
-            
+
             //Console.Write("Enter The String : ");
             //string Arr = Console.ReadLine();
             //string[] words=Arr.Split(' ');
             //Array.Reverse(words);
             //Console.WriteLine(string.Join(" ", words));
+            #endregion
+            //===========================================================
             #endregion
             //===========================================================
             #region Jagged Array Using one Loop
