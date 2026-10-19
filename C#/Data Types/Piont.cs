@@ -10,6 +10,11 @@ namespace C_.Data_Types
     {
         public int x { get; set; }
         public int y { get; set; }
-        
+
+        //public override string ToString()
+        //{
+        //    return $"x is {x} and y is {y} ";
+        //}
+
     }
 }

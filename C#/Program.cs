@@ -520,6 +520,19 @@ namespace C_
                    Max element = 9
                    Min element = 3
                  */
+            //int a, b, c;
+            //bool Result, Result02, Result03;
+            //Console.Write("Enter Number 01: ");
+            //Result = int.TryParse(Console.ReadLine(), out a);
+            //Console.Write("Enter Number 02: ");
+            //Result02 = int.TryParse(Console.ReadLine(), out b);
+            //Console.Write("Enter Number 03: ");
+            //Result03 = int.TryParse(Console.ReadLine(), out c);
+            //int Min = Math.Min(a, Math.Min(b, c));
+            //int Max = Math.Max(a, Math.Max(b, c));
+            //Console.Write($"Min Number is {Min}\n");
+            //Console.Write($"Max Number is {Max}");
+
             #endregion
             //===============================================
             #region Question 17 On Assignment Session03
@@ -530,7 +543,48 @@ namespace C_
                  Output: Days in Month: 31
 
                  */
-            #endregion 
+            //int Month = 0;
+            //bool result = false;
+
+            //while (!result)
+            //{
+            //    Console.Write("Enter Number of Month: ");
+
+            //    result = int.TryParse(Console.ReadLine(), out Month)
+            //             && Month >= 1
+            //             && Month <= 12;
+
+            //    if (!result)
+            //    {
+            //        Console.WriteLine("Invalid Month! Enter number between 1 and 12.");
+            //    }
+            //}
+
+            //switch (Month)
+            //{
+            //    case 1:
+            //    case 3:
+            //    case 5:
+            //    case 7:
+            //    case 8:
+            //    case 10:
+            //    case 12:
+            //        Console.WriteLine("31 Days");
+            //        break;
+
+            //    case 2:
+            //        Console.WriteLine("28 or 29 Days");
+            //        break;
+
+            //    case 4:
+            //    case 6:
+            //    case 9:
+            //    case 11:
+            //        Console.WriteLine("30 Days");
+            //        break;
+            //}
+
+            #endregion
             //=============================================
             #endregion
             //===============================================
@@ -995,6 +1049,7 @@ Check the Split Function (Member in String Class) Output will be a Single Consol
             //}
 
             #endregion
+            //===========================================================
         }
     }
 }
