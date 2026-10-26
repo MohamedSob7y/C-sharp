@@ -45,7 +45,6 @@ namespace C_
         //انما لو هو فى الاخر No Passing By Name Clr هيفهم انى بعمل call ومدى للFirst Parameter Value عشان معندوش اى default Value 
         #endregion
         //===========================================
-
         static void Main(string[] args)
         {
             #region Reference Type
