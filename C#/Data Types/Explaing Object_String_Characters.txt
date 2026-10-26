@@ -1,0 +1,524 @@
+هشرح لك الموضوع بالتفصيل لكن بشكل مفهوم، لأن النص اللي عندك بيتكلم عن Built-in Reference Types في C#، وده من أهم الأساسيات في اللغة.
+
+أولًا: يعني إيه Reference Type أصلًا؟
+
+في C# عندنا نوعين كبار من البيانات:
+
+Value Types
+زي: int, double, bool, char
+المتغير بيحتفظ بالقيمة نفسها
+Reference Types
+زي: object, string, delegate, dynamic
+المتغير بيحتفظ بمرجع Reference يشاور على مكان البيانات
+
+يعني باختصار:
+
+int x = 5; → المتغير ماسك القيمة 5
+string name = "Ali"; → المتغير ماسك مرجع لسلسلة نصية موجودة في الذاكرة
+1) object type
+
+النص بيقول إن object هو alias لـ System.Object.
+
+يعني:
+
+object x = 10;
+object y = "Hello";
+object z = true;
+
+كل دول ينفع يتحطوا في object.
+
+ليه؟
+
+لأن System.Object هو الأب الأساسي لكل الأنواع في C# تقريبًا.
+يعني أي نوع في الآخر بيرجع لـ Object.
+
+مثال:
+object a = 5;
+object b = "Ahmed";
+object c = 3.14;
+مهم جدًا: Boxing و Unboxing
+
+لما تحط Value Type جوه object، بيحصل Boxing.
+
+Boxing:
+int num = 10;
+object obj = num;
+
+هنا int اتحول لـ object.
+
+Unboxing:
+object obj = 10;
+int x = (int)obj;
+
+هنا رجعنا القيمة من object إلى int.
+
+ليه ده مهم؟
+
+لأن:
+
+object مرن جدًا
+لكن كثرة استخدامه ممكن تعمل حمل زيادة ومشكلات وقت التشغيل لو عملت cast غلط
+مثال غلط:
+object obj = "Hello";
+int x = (int)obj;   // Error وقت التشغيل
+
+لأن obj في الحقيقة ماسك string مش int.
+
+امتى أستخدم object؟
+لما يكون عندك حاجة عامة جدًا
+أو APIs بتتعامل مع أنواع مختلفة
+لكن غالبًا في الكود الحديث بنفضل Generics بدل object
+2) string type
+
+النص بيقول إن string هو alias لـ System.String، وهو يمثل سلسلة من الحروف Unicode.
+
+يعني:
+
+string name = "Kiro";
+مهم: string Reference Type
+
+رغم إنه Reference Type، لكن المقارنة فيه مميزة.
+
+المقارنة في string
+string a = "hello";
+string b = "h";
+b += "ello";
+
+Console.WriteLine(a == b);                  // True
+Console.WriteLine(object.ReferenceEquals(a, b)); // False
+معنى ده:
+a == b → بيقارن المحتوى
+ReferenceEquals(a, b) → بيقارن هل هما نفس الكائن في الذاكرة ولا لا
+إذًا:
+المحتوى متساوي → True
+لكن الاتنين مش نفس المرجع → False
+
+وده شيء مهم جدًا لأن string في C# بيعمل Value-based equality.
+
+string immutable
+
+دي من أهم النقاط.
+
+Immutable يعني:
+بعد ما تنشئ string، ماينفعش تغير محتواه نفسه.
+أي تعديل بيطلع string جديد.
+
+مثال:
+string s = "H";
+s += "ello";
+
+أنت ممكن تفتكر إن "ello" اتضافت على نفس النص، لكن اللي حصل فعليًا:
+
+النص القديم "H" فضل زي ما هو
+اتعمل string جديد "Hello"
+والمتغير s بقى يشاور عليه
+
+وده موضح في النص.
+
+ليه ده مهم؟
+
+لأن:
+
+آمن
+مفيد في الثبات والأمان
+لكن لو هتعمل تعديلات كتير جدًا على النصوص، بنستخدم StringBuilder
+الوصول لحروف الـ string
+string str = "test";
+char x = str[2];   // s
+
+الفهرسة بتبدأ من صفر:
+
+t → index 0
+e → index 1
+s → index 2
+t → index 3
+Loop على الحروف
+string str = "test";
+
+for (int i = 0; i < str.Length; i++)
+{
+    Console.WriteLine(str[i]);
+}
+3) أنواع String Literals
+
+النص قسمهم إلى 3 أنواع أساسية: raw, quoted, verbatim.
+
+أ) Quoted String Literal
+
+وده الشكل العادي:
+
+string s = "Hello";
+مع escape sequences:
+string s = "Line1\nLine2";
+\n → سطر جديد
+\\ → backslash
+\" → علامة تنصيص
+\u0066 → Unicode character
+مثال:
+string a = "\\\u0066\n F";
+Console.WriteLine(a);
+
+المخرجات:
+
+\\ → \
+\u0066 → f
+\n → newline
+ب) Verbatim String Literal
+
+وده اللي بيبدأ بـ @
+
+string path = @"c:\Docs\Source\a.txt";
+ميزته
+
+إنه ما بيطبقش escape sequences بنفس الشكل المعتاد.
+
+بدل ما تكتب:
+
+"c:\\Docs\\Source\\a.txt"
+
+تكتب:
+
+@"c:\Docs\Source\a.txt"
+لو عايز تكتب " داخله:
+
+بتكتبها مرتين:
+
+string text = @"""Hello""";
+ج) Raw String Literal
+
+وده النوع الحديث في C#، وبيبدأ وينتهي بثلاث علامات اقتباس أو أكثر:
+
+var text = """
+Hello
+World
+""";
+ميزته
+
+ممتاز جدًا للنصوص الطويلة، JSON، XML، SQL، Regex.
+
+مثال:
+var json = """
+{
+    "name": "Ahmed",
+    "age": 25
+}
+""";
+
+ده أحسن بكتير من إنك تفضل تهرب quotes وnew lines.
+
+كمان يدعم quotes داخل النص بسهولة
+var message = """
+"This is important"
+""";
+فكرة الـ indentation
+
+النص شرح إن مكان closing quotes هو اللي بيحدد الـ left margin للنص.
+يعني C# بيحاول يحافظ على التنسيق بشكل ذكي.
+
+4) UTF-8 String Literals
+
+النص بيقول إن .NET بيخزن string داخليًا بـ UTF-16، لكن ممكن تكتب literal بـ UTF-8 باستخدام u8.
+
+مثال:
+ReadOnlySpan<byte> data = "AUTH "u8;
+
+ده مش بيرجع string عادي، لكن بيرجع:
+
+ReadOnlySpan<byte>
+ليه ده مفيد؟
+
+مفيد في:
+
+الشبكات
+البروتوكولات
+HTTP headers
+performance-sensitive code
+مثال مكافئ:
+ReadOnlySpan<byte> data = new byte[] { 0x41, 0x55, 0x54, 0x48, 0x20 };
+
+لكن:
+
+"AUTH "u8
+
+أوضح وأسهل.
+
+ولو عايزه Array:
+byte[] arr = "AUTH "u8.ToArray();
+مهم:
+مش compile-time constant
+ماينفعش مع interpolation
+ماينفعش تكتب $"..."u8
+5) delegate
+
+النص بعد كده شرح الـ delegate.
+
+يعني إيه Delegate؟
+
+هو نوع Reference Type بيمثل مرجع لدالة.
+
+يعني كأنك بتخزن دالة في متغير.
+
+مثال:
+public delegate void MessageDelegate(string message);
+
+ده معناه:
+
+أنا عرّفت نوع اسمه MessageDelegate
+النوع ده يقدر يشاور على أي دالة:
+ترجع void
+وتستقبل string
+مثال عملي:
+public delegate void MessageDelegate(string message);
+
+class Program
+{
+    static void ShowMessage(string msg)
+    {
+        Console.WriteLine(msg);
+    }
+
+    static void Main()
+    {
+        MessageDelegate del = ShowMessage;
+        del("Hello");
+    }
+}
+الفكرة
+del مش نص
+ومش رقم
+ده مرجع لدالة
+ليه Delegate مهم؟
+
+لأنه أساس:
+
+Events
+Callbacks
+Lambdas
+LINQ أحيانًا
+البرمجة المرنة
+بدل ما تكتب delegate custom
+
+غالبًا بنستخدم:
+
+Action
+Func
+Action
+
+لدالة لا ترجع شيء:
+
+Action<string> act = msg => Console.WriteLine(msg);
+act("Hi");
+Func
+
+لدالة ترجع قيمة:
+
+Func<int, int, int> add = (x, y) => x + y;
+Console.WriteLine(add(2, 3));
+نقطة variance والمشكلة وقت التشغيل
+
+النص شرح إن أحيانًا دمج delegates من أنواع مختلفة قد يفشل وقت التشغيل حتى لو شكله مقبول وقت الـ compile.
+
+مثال:
+Action<string> stringAction = str => {};
+Action<object> objectAction = obj => {};
+
+Action<string> combination = stringAction + objectAction;
+
+ده ممكن يعمل runtime exception.
+
+الحل
+
+تلفه في delegate من نفس النوع:
+
+Action<string> wrappedObjectAction = new Action<string>(objectAction);
+Action<string> combination = stringAction + wrappedObjectAction;
+6) dynamic
+
+وده من أهم الحاجات اللي ناس كتير بتتلخبط فيها. النص شرحه بالتفصيل.
+
+يعني إيه dynamic؟
+
+معناه:
+
+أجل فحص النوع إلى وقت التشغيل بدل وقت الكومبايل.
+
+يعني المترجم ما يدققش قوي وقت الكتابة، ويسيب القرار لـ runtime.
+
+مثال:
+dynamic x = 10;
+Console.WriteLine(x + 5);
+
+ينفع.
+
+الفرق بين dynamic و object
+
+الاتنين ظاهريًا قريبين، لكن في فرق ضخم.
+
+object
+object obj = 10;
+Console.WriteLine(obj.GetType());   // شغال
+
+لكن:
+
+obj = obj + 3;   // compile-time error
+
+ليه؟
+لأن compiler شايف obj نوعه object
+ومايعرفش يجمع object مع int
+
+dynamic
+dynamic dyn = 10;
+dyn = dyn + 3;   // شغال
+
+ليه؟
+لأن compiler بيقول:
+
+أنا مش هتحقق دلوقتي
+خلّي runtime هو اللي يشوف
+
+وده مذكور بالنص.
+
+مهم جدًا
+
+dynamic يشبه object، لكن:
+
+object → checked at compile time
+dynamic → resolved at run time
+مثال:
+dynamic d = "Hello";
+Console.WriteLine(d.Length);   // شغال
+
+المترجم ما بيتأكدش وقتها إن Length موجودة، لكن وقت التشغيل بيشوفها.
+
+مثال خطر
+dynamic d = 5;
+Console.WriteLine(d.NotExistMethod());
+
+ده هيعدي Compile
+لكن هيضرب Runtime Error
+
+يعني dynamic:
+
+مرن
+لكن أقل أمان
+استخداماته
+
+النص ذكر إنه مفيد مع:
+
+COM APIs
+Office Automation
+IronPython
+DOM
+أي APIs ديناميكية
+الفرق بين object و dynamic باختصار قوي
+object
+الأب العام لكل الأنواع
+آمن أكثر
+يحتاج Casting
+compiler يفحص العمليات
+مثال:
+object o = "Hello";
+Console.WriteLine(((string)o).Length);
+dynamic
+compiler لا يفحص العمليات
+runtime هو اللي يقرر
+مرن جدًا
+لكن ممكن يسبب أخطاء وقت التشغيل
+مثال:
+dynamic d = "Hello";
+Console.WriteLine(d.Length);
+7) ليه المقال ركز على الأنواع دي؟
+
+لأنها built-in reference types مهمة جدًا في C#:
+
+object
+string
+delegate
+dynamic
+
+وكل واحد له دور مختلف:
+
+object
+
+للعمومية الشديدة
+
+string
+
+للتعامل مع النصوص
+
+delegate
+
+للتعامل مع الدوال كبيانات
+
+dynamic
+
+لما تحتاج مرونة وقت التشغيل
+
+خلاصة مرتبة
+object
+أصل كل الأنواع
+يقدر يخزن أي قيمة تقريبًا
+قد يحتاج boxing/unboxing
+أقل راحة من generics
+string
+Reference Type
+immutable
+== يقارن المحتوى
+له 3 literals مهمة:
+عادي " "
+verbatim @" "
+raw """ """
+delegate
+مرجع لدالة
+أساس الـ events والـ callbacks
+بديله العملي غالبًا Action و Func
+dynamic
+يتجاوز فحص الأنواع وقت compile
+يشتغل وقت runtime
+مرن لكن خطر لو استخدمته بلا داعي
+أهم نقطة تمتحن فيها أو تتسأل فيها
+
+غالبًا الأسئلة بتيجي حول:
+
+1) الفرق بين object و dynamic
+object: compile-time checking
+dynamic: runtime checking
+2) هل string value type ولا reference type؟
+reference type
+لكن المقارنة فيه بالمحتوى
+3) ليه string immutable؟
+أي تعديل بينشئ object جديد
+4) delegate يعني إيه؟
+type بيشاور على method
+مثال جامع صغير
+using System;
+
+public delegate void MyDelegate(string msg);
+
+class Program
+{
+    static void Print(string msg)
+    {
+        Console.WriteLine(msg);
+    }
+
+    static void Main()
+    {
+        object obj = 10;
+        string s = "Hello";
+        dynamic d = 5;
+        MyDelegate del = Print;
+
+        Console.WriteLine(obj);     // 10
+        Console.WriteLine(s);       // Hello
+        Console.WriteLine(d + 3);   // 8
+        del("Welcome");             // Welcome
+    }
+}
+
+ده جامع الأربع أفكار:
+
+object
+string
+dynamic
+delegate
