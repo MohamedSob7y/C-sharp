@@ -1088,6 +1088,9 @@ Check the Split Function (Member in String Class) Output will be a Single Consol
             #endregion
             //===========================================================
             #region Function Passing by Order
+            //https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/methods
+            //https://docs.google.com/presentation/d/1rN3middEoqZ2D5G1g-cHMSXgdJPqasOC/edit?slide=id.g3204256f54a_0_793#slide=id.g3204256f54a_0_793
+
             //Print("(", 4);//دا كدة Passing By Order 
             //لو عايز اغير الOrder
             //Print(Count:4,shape:")");//بتكتب اسم الحاجة اللى انت باعتها 
