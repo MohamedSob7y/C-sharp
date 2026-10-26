@@ -9,6 +9,43 @@ namespace C_
 {
     internal class Program
     {
+        #region function Passing By Order
+        //public static void Print(string shape, int Count)
+        //{
+        //    for (int i = 0; i < Count; i++)
+        //    {
+        //        Console.Write(i);
+        //    }
+        //}
+        #endregion
+        //===========================================
+        #region Function Passing By Default 
+        //public static void Print(string shape="&", int Count=15)
+        //{
+        //    for (int i = 0; i < Count; i++)
+        //    {
+        //        Console.Write(shape+" ");
+        //    }
+        //}
+        //public static void Print(string shape, int Count = 15)
+        //{
+        //    for (int i = 0; i < Count; i++)
+        //    {
+        //        Console.Write(shape + " ");
+        //    }
+        //}
+        //public static void Print(string shape = "&", int Count )//this invalid وحلها Passing By Name
+        //{
+        //    for (int i = 0; i < Count; i++)
+        //    {
+        //        Console.Write(shape + " ");
+        //    }
+        //}
+        //Rule => Function Has Default Parameter لازم يكون فى الاخر عشان معملشى Passing By Name
+        //انما لو هو فى الاخر No Passing By Name Clr هيفهم انى بعمل call ومدى للFirst Parameter Value عشان معندوش اى default Value 
+        #endregion
+        //===========================================
+
         static void Main(string[] args)
         {
             #region Reference Type
@@ -1050,6 +1087,38 @@ Check the Split Function (Member in String Class) Output will be a Single Consol
 
             #endregion
             //===========================================================
+            #region Function Passing by Order
+            //Print("(", 4);//دا كدة Passing By Order 
+            //لو عايز اغير الOrder
+            //Print(Count:4,shape:")");//بتكتب اسم الحاجة اللى انت باعتها 
+            //So حل مشكلة الPassing By Order => Passing By Name
+            #endregion
+            //===========================================================
+            #region Function Calling By Default
+            //Print();//طالما هى واخده فى الParameter Default Value للاتنين خلاص انا مش هبعت حاجة هنا الا لو عايز اغير فى حاجة وعايزه يعمل Override عليها 
+            //Print(shape:"$");//كدة انا غيرت الdefault Value وخليته ياخد قيمة جديدة 
+            //Print(Count:5);//لازم تعملها Passing By Name
+            //دول مستخدمين لو هو عامل default Value For one Parameter Not Two Parameter
+            //Print("@", 3);//Override on Default Value عادى 
+            #endregion
+            //===========================================================
+            #region Excape Sequence 
+            //Console.WriteLine("Mohamed\nSobhy");//Make New Line 
+            //Console.WriteLine("Mohamed\rSobhy");
+            //Console.WriteLine("Mohamed \bSobhy");//BackSpace
+            //Console.WriteLine("Mohamed\tSobhy");//Tap
+
+            //Console.WriteLine("/*\\");//Skipe Meaning
+            //Console.WriteLine(@"/*\");//Skipe Meaning
+            //Console.WriteLine("\\n");
+            //Console.WriteLine(@"\n");
+
+            //string Name = "Mohamed";
+            //int Id = 1245;
+            //Console.WriteLine($"Your Name is : {Name} and Your Id is {{{Id}}}");
+
+            #endregion
+
         }
     }
 }
