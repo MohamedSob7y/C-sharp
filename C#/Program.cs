@@ -45,6 +45,22 @@ namespace C_
         //انما لو هو فى الاخر No Passing By Name Clr هيفهم انى بعمل call ومدى للFirst Parameter Value عشان معندوش اى default Value 
         #endregion
         //===========================================
+        //#region Function Passing By Value
+        //public static void Swap(int x,int y)
+        //{
+        //    int temp= x; x = y; y = temp;
+        //}
+
+        //#endregion
+        //===========================================
+        #region Function Passing By Ref
+        //public static void Swap(ref int x,ref int y)
+        //{
+        //    int temp = x; x = y; y = temp;
+        //}
+
+        #endregion
+        //===========================================
         static void Main(string[] args)
         {
             #region Reference Type
@@ -1118,6 +1134,21 @@ Check the Split Function (Member in String Class) Output will be a Single Consol
             //string Name = "Mohamed";
             //int Id = 1245;
             //Console.WriteLine($"Your Name is : {Name} and Your Id is {{{Id}}}");
+
+            #endregion
+            //===========================================================
+            #region Function Passing By Value
+            //int A = 15, B = 20;
+            //Console.WriteLine($"Before Swapping: A is : {A} B is {B}");
+            //Swap(A,B);//Still The Same Value مفيش تغير لان دا بياخد نسخة من القيم يشتغل عليها مش القيم الاصلية 
+            //Console.WriteLine($"After Swapping: A is : {A} B is {B}");
+            #endregion
+            //===========================================================
+            #region Function With Passing By Ref
+            //int A = 15, B = 20;
+            //Console.WriteLine($"Before Swapping: A is : {A} B is {B}");
+            //Swap(ref A,ref B);//هنا بقا هيحصل الSwap لانى اشغلت القيم الاصلية بتاعت الA and B مش نسخة منهم
+            //Console.WriteLine($"After Swapping: A is : {A} B is {B}");
 
             #endregion
 
