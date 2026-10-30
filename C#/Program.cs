@@ -45,13 +45,13 @@ namespace C_
         //انما لو هو فى الاخر No Passing By Name Clr هيفهم انى بعمل call ومدى للFirst Parameter Value عشان معندوش اى default Value 
         #endregion
         //===========================================
-        //#region Function Passing By Value
+        #region Function Passing By Value
         //public static void Swap(int x,int y)
         //{
         //    int temp= x; x = y; y = temp;
         //}
 
-        //#endregion
+        #endregion
         //===========================================
         #region Function Passing By Ref
         //public static void Swap(ref int x,ref int y)
