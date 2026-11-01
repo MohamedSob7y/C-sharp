@@ -45,7 +45,7 @@ namespace C_
         //انما لو هو فى الاخر No Passing By Name Clr هيفهم انى بعمل call ومدى للFirst Parameter Value عشان معندوش اى default Value 
         #endregion
         //===========================================
-        #region Function Passing By Value
+        #region Function Passing By Value with Parameter Value Type
         //public static void Swap(int x,int y)
         //{
         //    int temp= x; x = y; y = temp;
@@ -53,7 +53,7 @@ namespace C_
 
         #endregion
         //===========================================
-        #region Function Passing By Ref
+        #region Function Passing By Ref with Parameter Value Type
         //public static void Swap(ref int x,ref int y)
         //{
         //    int temp = x; x = y; y = temp;
@@ -61,6 +61,42 @@ namespace C_
 
         #endregion
         //===========================================
+        #region Function Passing By Value with Parameter Reference Type
+        //public static int SumArray(int[] Arr)
+        //{
+        //    int sum = 0;
+
+        //    if (Arr is not null)
+        //    {
+        //        Arr[0] = 100;
+        //        for (int i = 0; i < Arr.Length; i++)
+        //        {
+        //            sum += Arr[i];
+        //        }
+        //    }
+        //    return sum;
+        //}
+
+        #endregion
+        //===========================================================
+        #region Function Passing By Reference  with Parameter Reference Type
+        //public static int SumArray(ref int[] Arr)
+        //{
+        //    int sum = 0;
+
+        //    if (Arr is not null)
+        //    {
+        //        Arr[0] = 100;
+        //        for (int i = 0; i < Arr.Length; i++)
+        //        {
+        //            sum += Arr[i];
+        //        }
+        //    }
+        //    return sum;
+        //}
+
+        #endregion
+        //===========================================================
         static void Main(string[] args)
         {
             #region Reference Type
@@ -1137,20 +1173,43 @@ Check the Split Function (Member in String Class) Output will be a Single Consol
 
             #endregion
             //===========================================================
-            #region Function Passing By Value
+            #region Function Passing By Value with Parameter Value Type
             //int A = 15, B = 20;
             //Console.WriteLine($"Before Swapping: A is : {A} B is {B}");
             //Swap(A,B);//Still The Same Value مفيش تغير لان دا بياخد نسخة من القيم يشتغل عليها مش القيم الاصلية 
             //Console.WriteLine($"After Swapping: A is : {A} B is {B}");
             #endregion
             //===========================================================
-            #region Function With Passing By Ref
+            #region Function With Passing By Ref with Parameter Value Type
             //int A = 15, B = 20;
             //Console.WriteLine($"Before Swapping: A is : {A} B is {B}");
             //Swap(ref A,ref B);//هنا بقا هيحصل الSwap لانى اشغلت القيم الاصلية بتاعت الA and B مش نسخة منهم
             //Console.WriteLine($"After Swapping: A is : {A} B is {B}");
 
             #endregion
+            //===========================================================
+            #region Function Passing By Value with Parameter Reference Type
+            //int[] Numbers = { 10, 20, 30, 40, 50 };
+            //Console.WriteLine("First Number Before Change");
+            //Console.WriteLine(Numbers[0]);
+            //SumArray(Numbers);//Send Copy Of Value of Numbers والنسخة من الData هنا هى الAddress object in heap يبقى كدة الاتنين بيشاوروا على نفس الobject عشان كدة الاتنين بيتاثروا مع انى باعت نسخة من الvalue يعنى مش الActual Value 
+            ////النسخة من Value is => Address of Object in Heap
+            //Console.WriteLine("First Number After Change");
+            //Console.WriteLine(Numbers[0]);
+            #endregion
+            //===========================================================
+            #region Function Passing By Reference  with Parameter Reference Type
+            //int[] Numbers = { 10, 20, 30, 40, 50 };
+            //Console.WriteLine("First Number Before Change");
+            //Console.WriteLine(Numbers[0]);
+            //SumArray(ref Numbers);//Send Actual Value of Numbers مش هبعت نسخة عشان كدة الاتنين بيشاوروا برضو على نفس الobject in heap
+            
+            //Console.WriteLine("First Number After Change");
+            //Console.WriteLine(Numbers[0]);
+
+            #endregion
+            //===========================================================
+
 
         }
     }
