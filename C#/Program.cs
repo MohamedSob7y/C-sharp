@@ -97,6 +97,40 @@ namespace C_
 
         #endregion
         //===========================================================
+        #region Function Passing By value  with Parameter Reference Type Example02
+        //public static int SumArray( int[] arr)
+        //{
+        //    int sum = 0;
+        //    arr = new int[] { 10, 20, 30, 40, 50 };
+        //    for (int i = 0; i < arr.Length; i++)
+        //    {
+        //        sum += arr[i];
+        //    }
+        //    return sum;
+        //}
+
+        #endregion
+        //===========================================================
+        #region Function Passing By value  with Parameter Reference Type Example02
+        //public static int SumArray(ref int[] arr)
+        //{
+        //    int sum = 0;
+        //    arr = new int[] { 10, 20, 30, 40, 50 };
+        //    for (int i = 0; i < arr.Length; i++)
+        //    {
+        //        sum += arr[i];
+        //    }
+        //    return sum;
+        //}
+
+        #endregion
+        //===========================================================
+        #region Function Passing By Out
+
+
+
+        #endregion
+
         static void Main(string[] args)
         {
             #region Reference Type
@@ -1203,14 +1237,37 @@ Check the Split Function (Member in String Class) Output will be a Single Consol
             //Console.WriteLine("First Number Before Change");
             //Console.WriteLine(Numbers[0]);
             //SumArray(ref Numbers);//Send Actual Value of Numbers مش هبعت نسخة عشان كدة الاتنين بيشاوروا برضو على نفس الobject in heap
-            
+
             //Console.WriteLine("First Number After Change");
             //Console.WriteLine(Numbers[0]);
 
             #endregion
             //===========================================================
+            #region Function Passing By Reference  with Parameter Reference Type Example02
+            //int[] Numbers = { 1, 2, 3 };
+            //Console.WriteLine("First Number Before Change");
+            //Console.WriteLine(Numbers[0]);//1
+            //SumArray(Numbers);//Send Actual Value of Numbers مش هبعت نسخة عشان كدة الاتنين بيشاوروا برضو على نفس الobject in heap
+            //Console.WriteLine("First Number After Change");
+            //Console.WriteLine(Numbers[0]);//1
+
+            #endregion
+            //===========================================================
+            #region Function Passing By Reference  with Parameter Reference Type Example02
+            //int[] Numbers = { 1, 2, 3 };
+            //Console.WriteLine("First Number Before Change");
+            //Console.WriteLine(Numbers[0]);//1
+            //SumArray(ref Numbers);//Send Actual Value of Numbers مش هبعت نسخة عشان كدة الاتنين بيشاوروا برضو على نفس الobject in heap
+            //Console.WriteLine("First Number After Change");
+            //Console.WriteLine(Numbers[0]);//10
+
+            #endregion
+            //===========================================================
+            #region Function Passing By Out
 
 
+
+            #endregion
         }
     }
 }
