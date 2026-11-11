@@ -1,7 +1,10 @@
 ﻿using C_.Data_Types;
+using C_.Return_Multi_Value_Before_Tuple;
 using System.Collections.Specialized;
+using System.Data;
 using System.Globalization;
 using System.Net.Http.Headers;
+using System.Reflection.PortableExecutable;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -126,11 +129,102 @@ namespace C_
         #endregion
         //===========================================================
         #region Function Passing By Out
+        //To Make Function Return Multi Value at the Same Time => 1: Passing by out  2:Tuple    3:Yield
+        //public static int SumSub(int a,int b)
+        //{
+        //    int Sum = a + b;
+        //    int sub = a - b;
+
+        //return Sum,Sub;//this invalid لانى لازم اعمل Return Only one Value
+
+        //return Sum;
+        //return sub;//inValid لانى بمجرد مابعمل return انا خلاص خلصت excuting Code of Function 
+        //يعنى بعد الreturn الاولى خلاص مش هوصل اصلا للreturn التانيه 
+
+        //فى اكتر من طريقة لحل المشكلة دى 1: Passing by out   + Yield+ Tuple
+
+        //}
+        //===============================================================
+        #region Possible Solutions For Return Mutli Things
+        //public static int[] SumSub(int a, int b)
+        //{
+        //    int Sum = a + b;
+        //    int sub = a - b;
+        //    //return new int[] { Sum, sub };
+        //    return [Sum, sub];//Short Hand Array
+        //}
+
+        //===============================================================
+
+        //public static Calculations SumSub(int a, int b)
+        //{
+        //    int Sum = a + b;
+        //    int sub = a - b;
+        //   return new Calculations() { Sum = Sum, Sub = sub };
+        //}
+        //===============================================================
+
+        //public static (int,int) SumSub(int a, int b)
+        //{
+        //    int Sum = a + b;
+        //    int sub = a - b;
+        //    return (a,b);//this Using Tuple
+        //}
+
+        //كل الطرق دى return Only one Value وانا عايز return MultiValues
+        //===============================================================
+
+        //using Passing By out => شغال على Actual Data Not Copy of Data زيها زى الReference  
+        //public static void SumSub(int a, int b,out int sum,out int sub)
+        //{
+        //    sum = a + b;
+        //    sub = a - b;
+        //}//لازم اعمل Inialize For Variable اللى عاملهم Passing by out عشان ميضربشى اى Exception
+        //Exmaple For Passing By out => Use TryParse
 
 
-
+        //Passing By Ref
+        //public static void SumSub(int a, int b, ref int sum, ref int sub)
+        //{
+        //    sum = a + b;
+        //    sub = a - b;
+        //}
         #endregion
 
+        //===============================================================
+
+        #endregion
+        //===========================================================
+        #region Passing By Params
+        //public static int Sumarray(params int[]arr)
+        //{
+        //    int Sum=0;
+        //    for(int i=0;i<arr.Length;i++)
+        //    {
+        //        Sum+= arr[i];   
+        //    }
+        //    return Sum; 
+        //}
+
+        //Passing By Param لازم تتعمل فى اخر Parameter 
+
+        //public static int Sumarray(int y, params int[] arr)
+        //{
+        //    int Sum = 0;
+        //    for (int i = 0; i < arr.Length; i++)
+        //    {
+        //        Sum += arr[i];
+        //    }
+        //    return Sum;
+        //}
+        //يبقى ترتيب الParameter   => 1 : Mandatory   2:Default   3: Param
+        //لازم Param واحد بس فى الFunction يعنى مقدرش اعمل اكتر من Parameter Passing By Param
+        
+        
+        //Params كانت بتشتغل على array Only With C#12 => After C# 13 Make Params Collection Conatin IEnumberable<T> ICollection<T>  List<T>   IReadonlyList<T> IReadonlyCollection<T>  or Any Class Will implement this interface 
+        
+        #endregion
+        //===========================================================
         static void Main(string[] args)
         {
             #region Reference Type
@@ -1264,10 +1358,42 @@ Check the Split Function (Member in String Class) Output will be a Single Consol
             #endregion
             //===========================================================
             #region Function Passing By Out
+            //int[] result = SumSub(1, 2);
+            //Console.WriteLine(result[0]);
+            //Console.WriteLine(result[1]);
+            //===========================================================
+            //After Passing By Out
+            //int x = 10, y = 20, sum, sub;
+            //SumSub(x, y, out sum, out sub);
 
 
+            //ممكن ابعت الSum + Sub by Ref لان الاتنين بيشتغلوا على الActual Variable طب اية الفرق بينهم طالما اقدر استخدم الاتنين هنا 
+            //Passing By out عن طريق الكلمة دى => عادى تبعته من غير inialize زى فوق كدة انما لو عملت ref  لازم تبعت الSum + Sub وانت عامله Initlaize 
+            //int x = 10, y = 20, sum=0, sub=0;
+            //SumSub(x, y, ref sum, ref sub);
+            //Console.WriteLine(sum);
+            //Console.WriteLine(sub);
+            #endregion
+            //===========================================================
+            #region Passing By Param
+            //int[] Numbers = [10, 20, 30, 40, 50];
+            //Sumarray(Numbers);//دى الطريقة العادية 
+            //Using Passing By Param
+            //Sumarray(10, 20, 30, 40, 50);//كدة هيحسب انى ببعتله 5 Argument يبقى لازم الFunction Conatin 5 Parameter
+            //بيعمال كل الElements دى اللى ببعتهاله as Single Param as Single Element
+            //Solving this Problem => Passing Params For Functions
+
+
+            //With Passing by Param لو فى الاخر 
+            //Sumarray(10, 20, 30, 40, 50); // So y=10 and Arr=20 30 40 50
 
             #endregion
+            //===========================================================
+
+
+
+
+
         }
     }
 }
