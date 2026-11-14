@@ -1,6 +1,7 @@
 ﻿using C_.Data_Types;
 using C_.Return_Multi_Value_Before_Tuple;
 using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Data;
 using System.Globalization;
 using System.Net.Http.Headers;
@@ -219,10 +220,10 @@ namespace C_
         //}
         //يبقى ترتيب الParameter   => 1 : Mandatory   2:Default   3: Param
         //لازم Param واحد بس فى الFunction يعنى مقدرش اعمل اكتر من Parameter Passing By Param
-        
-        
+
+
         //Params كانت بتشتغل على array Only With C#12 => After C# 13 Make Params Collection Conatin IEnumberable<T> ICollection<T>  List<T>   IReadonlyList<T> IReadonlyCollection<T>  or Any Class Will implement this interface 
-        
+
         #endregion
         //===========================================================
         static void Main(string[] args)
@@ -1389,8 +1390,94 @@ Check the Split Function (Member in String Class) Output will be a Single Consol
 
             #endregion
             //===========================================================
+            #region Handle Null
+            //Nullable<int> x = null;//this Old Way of Nullable Value Type
+            //int? y = null;//this New Way of Nullable Value Type
+            //===========================================================
+            //int y = 15;
+            //int? x = y;//this Valid as x تقدر تشيل int+ Nullable int => Implicit Casting
 
 
+            //int? y= 16;
+            //int x = y;//this Invalid as x تقدر تشيل فقط Int بس وانت باعتلها حاجة من نوع Nullable Int 
+
+            //حل المشكلة دى 
+            //int x = (int)y;//this Explicit Casting this unSafty عشان لو باعت null هيضرب exception
+
+
+
+            //int? x = null;
+            ////int y = (int)x;//this Exception حتى بعد ماعملتلها  Casting برضو دا مش Safty
+            //int y;
+
+            ////To Handle This UnSafty Error
+            //if(x is not null||x.HasValue)
+            //{
+            //    y=x.Value; //this For Has Value
+            //    y = (int)x;//this For Null 
+            //}
+            //else
+            //{
+            //    y = 0;
+            //}
+            //Using Ternary Operator
+            // y=x.HasValue ? x.Value : 0;
+
+
+            //Using Null Colesing Operator
+
+            //y = x ?? 0;
+
+
+            //Get Value or Default
+            //y=x.GetValueOrDefault();//لو موجود value يبقى تحطها جوه الy 
+            //if y is null=> Get Default Value Of Data Type of Y store this in x
+            //===========================================================
+            //Nullable Reference Type
+            // string name = null;
+            //كدة كدة  this Variable From Type Reference Data Type يقدر يشيل Null عادى طب ليه بنعمل Nullable Reference Type?
+            //هنا كدة ال Compiler Check هل عنده Null كدة بيقؤلك مش هينفع تسخدمه فى اى Operation تانى فى المستقبل عشان هيضرب Exception
+            //الاحسن تعمله Nullable عشان الCompiler مايعملشى Check ويعرف انه شايل Nullable Refrence Type 
+            //انما قبل ماعمله كان لازم يروح Check That variable Store Data Or Null
+
+
+            //يبقى كدة الFeature اللى اتعملت فى الNullable Reference Type انى خليت الCompiler مايعملشى Check ودا احسن فى الPerformance 
+            //طب انا عايز  اخلى الCompiler يعمل warning لحجات وحجات تانيه لاء يبقى استخدم الRegion Nullable Disable وحط جوه الكود اللى مش عايزه يعمل Checking عليه
+            //#nullable disable
+            //string name02=null;
+
+            //Second Way => Using Null Forgiven Operator يعنى متعملشى Checking For Null + Warining للسطر  دا فقط
+
+            //string name = null!;
+            //===========================================================
+            //Null Propagation Operator 
+
+            //int[] Numbers = [10, 20, 30, 40, 50];
+            //for (int i = 0; i < Numbers.Length; i++)//this Code Not Safty لان لو array = Null هيضرب exception => So Solve this Problem Using Null Propagation Operator
+            //{
+            //    Console.WriteLine(Numbers[i]);
+            //}
+
+            //Solving This Problem 
+            //int[] Numbers = null;
+            //for (int i = 0; i < Numbers?.Length; i++)//this Code Not Safty لان لو array = Null هيضرب exception => So Solve this Problem Using Null Propagation Operator
+            //{
+            //    //this This ? معناها If Numbers has Value Propagate ادخل جواه وهات القيم دى ولو مفيش اطبع null بس الاهم انو ميضربش exception 
+            //    Console.WriteLine(Numbers[i]);
+            //}//If Number مش بيشاور على حاجة not Making Propagation
+            //Numbers?.Length
+            //===========================================================
+            //int[] Numbers = null;
+            ////int ArrayLength = Numbers?.Length??0;//Using Null Colasing Operator
+            //int? ArrayLength = Numbers?.Length;//Using Nullable Data Type
+            //for (int i = 0; i < ArrayLength; i++)
+            //{
+            //    Console.WriteLine(Numbers[i]);
+            //}
+
+
+            #endregion
+            //===========================================================
 
 
 

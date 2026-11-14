@@ -6,6 +6,8 @@
     <RootNamespace>C_</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	<!--<Nullable>disable</Nullable>دى لو عايز اقفل الWarninng من الProgram-->
   </PropertyGroup>
 
+	
 </Project>
