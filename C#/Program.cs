@@ -226,6 +226,52 @@ namespace C_
 
         #endregion
         //===========================================================
+        #region Assignment Session06 Functions
+        //===========================================================
+        #region Question 04 
+        //public static int Sum(int Number)
+        //{
+        //    int Reminder = 0, sum = 0;
+        //    while (Number != 0)
+        //    {
+        //        Reminder = Number % 10;//Get اخر Digit
+        //        sum += Reminder;
+        //        Number = Number / 10;//Delete this Digit
+        //    }
+        //    return sum;
+        //} 
+        #endregion
+        //===========================================================
+        #region Question 05 
+
+        //public static bool IsPrime(int Number)
+        //{
+        //    if (Number <= 1)
+        //        return false;
+
+        //    for (int i = 2; i < Number; i++)
+        //    {
+        //        if (Number % i == 0)
+        //            return false;
+        //    }
+
+        //    return true;
+        //}
+
+        #endregion
+        //===========================================================
+        #region Question 08
+        //public static string SwapChar(char[] Letters, int Position, char SwappedCharacter)
+        //{
+        //    Letters[Position] = SwappedCharacter;
+
+        //    return new string(Letters);
+
+        //} 
+        #endregion
+        //===========================================================
+        #endregion
+        //===========================================================
         static void Main(string[] args)
         {
             #region Reference Type
@@ -1478,9 +1524,45 @@ Check the Split Function (Member in String Class) Output will be a Single Consol
 
             #endregion
             //===========================================================
+            #region Assignment Session06 Functions
+            //===========================================================
+            #region Question 04
+            /*
+                4-	Write a program in C# Sharp to create a function to calculate the sum of the individual digits of a given number.
+                   Output should be like 
+                   Enter a number: 25                                                                                            
+                   The sum of the digits of the number 25 is: 7
+
+                */
+            //int Number;
+            //Console.Write("Enter Numbers: ");
+            //bool Result=int.TryParse(Console.ReadLine(), out Number);
+            //Console.WriteLine(Sum(Number)); 
+            #endregion
+            //===========================================================
+            #region Question 05
+            /*
+             5-	Create a function named "IsPrime", which receives an integer number and returns true if it is prime, or false if it is not:
+             */
+            //int Number;
+            //Console.Write("Enter Numbers: ");
+            //bool Result = int.TryParse(Console.ReadLine(), out Number);
+            //Console.WriteLine(IsPrime(Number));
 
 
 
+            #endregion
+            //===========================================================
+            #region Question 08
+            //char[] Letters = { 'H', 'e', 'l', 'l', 'o' };
+
+            //string Result = SwapChar(Letters, 1, 'a');
+
+            //Console.WriteLine(Result); 
+            #endregion
+
+            //===========================================================
+            #endregion
         }
     }
 }
